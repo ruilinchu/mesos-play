@@ -1,0 +1,14 @@
+---
+max_clientCnxns: 50
+init_limit: 10
+sync_limit: 5
+tick_time: 2000
+data_dir: /var/lib/zookeeper
+client_port: 2181
+zoo_id: 1
+
+# List of dict (i.e. {zookeeper_hosts:[{host:,id:},{host:,id:},...]})
+zookeeper_hosts:
+  - host: "{{inventory_hostname}}" # the machine running 
+    id: 1
+
