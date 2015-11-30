@@ -1,4 +1,6 @@
 #!/bin/sh
 
-echo stat | nc localhost 2181
-echo ruok | nc localhost 2181
+for i in `seq 1 3`; do
+    echo stat | nc node$i 2181
+    echo ruok | nc node$i 2181
+done
