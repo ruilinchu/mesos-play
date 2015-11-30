@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir roles
+mkdir -p roles
 cd roles
 
 # fix the host interation loop for cfg template
