@@ -1,0 +1,11 @@
+- hosts: [mesos-master]
+  pre_tasks:
+    - name: Install HAProxy (RedHat)
+      yum: pkg=haproxy state=present
+      when: ansible_os_family == "RedHat"
+
+  roles:
+    - { role: 'ansible-mesos', mesos_quorum: "2", zookeeper_hostnames: "{{ groups.zookeeper | join(':' + zookeeper_client_port + ',')  }}:{{ zookeeper_client_port  }}", mesos_install_mode: 'master', mesos_cluster_name: 'mlh_mesos' }
+    - { role: 'ansible-marathon', zookeeper_hostnames: "{{ groups.zookeeper | join(':' + zookeeper_client_port + ',')  }}:{{ zookeeper_client_port  }}" }
+
+                
